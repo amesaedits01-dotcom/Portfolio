@@ -4,7 +4,8 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { I18nProvider } from './contexts/I18nContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import LogoCarousel from './components/LogoCarousel';
+import BrandCarousel from './components/BrandCarousel';
+import YouTubeCarousel from './components/YouTubeCarousel';
 import Projects from './components/Projects';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
@@ -17,7 +18,8 @@ function App() {
         <div className="App">
           <Navbar />
           <Hero />
-          <LogoCarousel />
+          <BrandCarousel />
+          <YouTubeCarousel />
           <Projects />
           <FAQ />
           <Contact />

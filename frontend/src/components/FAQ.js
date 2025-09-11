@@ -33,26 +33,29 @@ const FAQ = () => {
   };
 
   return (
-    <section className="faq-section">
+    <section id="faq" className="faq-section">
       <div className="faq-container">
-        <h2 className="faq-title">{t('faq.title')}</h2>
+        <h2 className="faq-title" data-i18n="faq.title">{t('faq.title')}</h2>
         
-        <div className="faq-list">
+        <div className="faq-list" role="list">
           {faqItems.map((item) => {
             const isOpen = openItems.has(item.key);
             return (
-              <div key={item.key} className="faq-item">
+              <div key={item.key} className="faq-item" role="listitem">
                 <button
                   className="faq-question"
                   onClick={() => toggleItem(item.key)}
                   onKeyPress={(e) => handleKeyPress(e, item.key)}
                   aria-expanded={isOpen}
                   aria-controls={`answer-${item.key}`}
+                  id={`question-${item.key}`}
+                  data-i18n={`faq.${item.key}.question`}
                 >
                   <span>{item.question}</span>
                   <ChevronDown 
                     className={`chevron ${isOpen ? 'open' : ''}`}
                     size={20}
+                    aria-hidden="true"
                   />
                 </button>
                 
@@ -61,9 +64,10 @@ const FAQ = () => {
                   className={`faq-answer ${isOpen ? 'open' : ''}`}
                   role="region"
                   aria-labelledby={`question-${item.key}`}
+                  aria-hidden={!isOpen}
                 >
                   <div className="faq-answer-content">
-                    <p>{item.answer}</p>
+                    <p data-i18n={`faq.${item.key}.answer`}>{item.answer}</p>
                   </div>
                 </div>
               </div>
@@ -72,8 +76,8 @@ const FAQ = () => {
         </div>
 
         <div className="cta-section">
-          <h3 className="cta-text">{t('cta.text')}</h3>
-          <p className="cta-subtitle">{t('cta.subtitle')}</p>
+          <h3 className="cta-text" data-i18n="cta.text">{t('cta.text')}</h3>
+          <p className="cta-subtitle" data-i18n="cta.subtitle">{t('cta.subtitle')}</p>
         </div>
       </div>
     </section>
