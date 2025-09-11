@@ -100,7 +100,7 @@ const Hero = () => {
         // Draw particle with parallax offset
         ctx.save();
         ctx.globalAlpha = particle.opacity;
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim() || '#ffffff';
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-particle').trim() || '#ffffff';
         ctx.beginPath();
         ctx.arc(
           particle.x + offsetX,
@@ -134,12 +134,17 @@ const Hero = () => {
     }
   };
 
+  const handleScheduleCall = () => {
+    // Updated Calendly URL as requested
+    window.open('https://calendly.com/amesaedits01/30min', '_blank', 'noopener,noreferrer');
+  };
+
   const toggleParticles = () => {
     setIsPaused(!isPaused);
   };
 
   return (
-    <section className="hero" ref={containerRef}>
+    <section id="home" className="hero" ref={containerRef}>
       {!isReducedMotion && (
         <>
           <canvas 
@@ -159,21 +164,23 @@ const Hero = () => {
       
       <div className="hero-content">
         <div className="hero-text">
-          <h1 className="hero-title">{t('hero.title')}</h1>
-          <p className="hero-subtitle">{t('hero.subtitle')}</p>
-          <p className="hero-microcopy">{t('hero.microcopy')}</p>
+          <h1 className="hero-title" data-i18n="hero.title">{t('hero.title')}</h1>
+          <p className="hero-subtitle" data-i18n="hero.subtitle">{t('hero.subtitle')}</p>
+          <p className="hero-microcopy" data-i18n="hero.microcopy">{t('hero.microcopy')}</p>
         </div>
         
         <div className="hero-buttons">
           <button 
             className="hero-btn primary"
             onClick={() => scrollToSection('projects')}
+            data-i18n="hero.projectsBtn"
           >
             {t('hero.projectsBtn')}
           </button>
           <button 
             className="hero-btn secondary"
-            onClick={() => window.open('https://calendly.com/arielmesa', '_blank')}
+            onClick={handleScheduleCall}
+            data-i18n="hero.scheduleBtn"
           >
             {t('hero.scheduleBtn')}
           </button>

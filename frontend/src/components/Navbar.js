@@ -20,11 +20,15 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
+    if (sectionId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+    setIsMenuOpen(false);
   };
 
   const handleKeyPress = (event, action) => {
@@ -38,21 +42,46 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         <div className="navbar-brand">
-          <span className="brand-text">AM</span>
+          <button 
+            className="brand-text"
+            onClick={() => scrollToSection('home')}
+            onKeyPress={(e) => handleKeyPress(e, () => scrollToSection('home'))}
+            aria-label="Go to home"
+          >
+            AM
+          </button>
         </div>
 
         <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
           <button 
             className="nav-link"
+            onClick={() => scrollToSection('home')}
+            onKeyPress={(e) => handleKeyPress(e, () => scrollToSection('home'))}
+            data-i18n="nav.home"
+          >
+            {t('nav.home')}
+          </button>
+          <button 
+            className="nav-link"
             onClick={() => scrollToSection('projects')}
             onKeyPress={(e) => handleKeyPress(e, () => scrollToSection('projects'))}
+            data-i18n="nav.projects"
           >
             {t('nav.projects')}
           </button>
           <button 
             className="nav-link"
+            onClick={() => scrollToSection('faq')}
+            onKeyPress={(e) => handleKeyPress(e, () => scrollToSection('faq'))}
+            data-i18n="nav.faq"
+          >
+            {t('nav.faq')}
+          </button>
+          <button 
+            className="nav-link"
             onClick={() => scrollToSection('contact')}
             onKeyPress={(e) => handleKeyPress(e, () => scrollToSection('contact'))}
+            data-i18n="nav.contact"
           >
             {t('nav.contact')}
           </button>

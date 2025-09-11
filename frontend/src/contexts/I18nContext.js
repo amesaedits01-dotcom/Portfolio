@@ -10,17 +10,19 @@ export const useI18n = () => {
   return context;
 };
 
-// Mock translations - will be loaded from JSON files
+// Updated translations with all missing strings
 const translations = {
   es: {
     nav: {
+      home: "Inicio",
       projects: "Proyectos",
+      faq: "FAQ",
       contact: "Contacto"
     },
     hero: {
       title: "Libera tu creatividad",
       subtitle: "Motion graphics que convierten vistas en leads",
-      microcopy: "Unleash the creativity — take your brand to the next level.",
+      microcopy: "Take your brand to the next level.",
       projectsBtn: "Proyectos",
       scheduleBtn: "Agenda llamada"
     },
@@ -65,23 +67,56 @@ const translations = {
       form: {
         name: "Nombre",
         email: "Email",
-        message: "Mensaje",
-        submit: "Enviar"
+        serviceType: "Tipo de Servicio",
+        projectType: "Tipo de Proyecto", 
+        budget: "Presupuesto",
+        message: "Descripción del Proyecto",
+        submit: "Enviar",
+        sending: "Enviando...",
+        success: "¡Mensaje enviado correctamente! Te responderé pronto.",
+        error: "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo."
+      },
+      serviceTypes: {
+        videoEditing: "Edición de Video",
+        motionGraphics: "Motion Graphics",
+        logoAnimation: "Animación de Logo",
+        socialMedia: "Contenido Redes Sociales"
+      },
+      projectTypes: {
+        reel: "Reel",
+        advertisement: "Anuncio",
+        productVideo: "Video de Producto",
+        uiVideo: "Video UI",
+        other: "Otro"
+      },
+      budgetRanges: {
+        under500: "Menos de $500",
+        "500to1000": "$500 - $1,000",
+        "1000to2500": "$1,000 - $2,500",
+        "2500to5000": "$2,500 - $5,000",
+        over5000: "Más de $5,000",
+        discuss: "A discutir"
       }
     },
     footer: {
       copyright: "© 2025 Ariel Mesa. Todos los derechos reservados."
+    },
+    carousel: {
+      trustedBy: "Empresas que confían en nosotros",
+      followedBy: "Seguido por creadores"
     }
   },
   en: {
     nav: {
+      home: "Home",
       projects: "Projects",
+      faq: "FAQ",
       contact: "Contact"
     },
     hero: {
       title: "Unleash your creativity",
       subtitle: "Motion graphics that convert views into leads",
-      microcopy: "Unleash the creativity — take your brand to the next level.",
+      microcopy: "Take your brand to the next level.",
       projectsBtn: "Projects",
       scheduleBtn: "Schedule call"
     },
@@ -90,7 +125,7 @@ const translations = {
       categories: {
         reels: "Reels",
         videosUI: "UI Videos",
-        videosProduct: "Product Videos", 
+        videosProduct: "Product Videos",
         logoReveal: "Logo Reveal"
       }
     },
@@ -125,13 +160,44 @@ const translations = {
       title: "Contact",
       form: {
         name: "Name",
-        email: "Email", 
-        message: "Message",
-        submit: "Send"
+        email: "Email",
+        serviceType: "Service Type",
+        projectType: "Project Type",
+        budget: "Budget", 
+        message: "Project Description",
+        submit: "Send",
+        sending: "Sending...",
+        success: "Message sent successfully! I'll get back to you soon.",
+        error: "There was an error sending the message. Please try again."
+      },
+      serviceTypes: {
+        videoEditing: "Video Editing",
+        motionGraphics: "Motion Graphics", 
+        logoAnimation: "Logo Animation",
+        socialMedia: "Social Media Content"
+      },
+      projectTypes: {
+        reel: "Reel",
+        advertisement: "Advertisement",
+        productVideo: "Product Video",
+        uiVideo: "UI Video",
+        other: "Other"
+      },
+      budgetRanges: {
+        under500: "Under $500",
+        "500to1000": "$500 - $1,000",
+        "1000to2500": "$1,000 - $2,500", 
+        "2500to5000": "$2,500 - $5,000",
+        over5000: "Over $5,000",
+        discuss: "Let's discuss"
       }
     },
     footer: {
       copyright: "© 2025 Ariel Mesa. All rights reserved."
+    },
+    carousel: {
+      trustedBy: "Trusted by companies",
+      followedBy: "Followed by creators"
     }
   }
 };
@@ -143,6 +209,23 @@ export const I18nProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('language', language);
+    
+    // Update all elements with data-i18n attributes
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      const translation = t(key);
+      
+      if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+        if (element.placeholder) {
+          element.placeholder = translation;
+        }
+      } else if (element.tagName === 'IMG') {
+        element.alt = translation;
+      } else {
+        element.textContent = translation;
+      }
+    });
   }, [language]);
 
   const t = (key) => {
