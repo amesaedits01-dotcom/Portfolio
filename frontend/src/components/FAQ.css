@@ -1,6 +1,7 @@
 .faq-section {
   padding: 6rem 0;
-  background: var(--bg);
+  background: var(--color-section-5);
+  transition: background 0.3s ease;
 }
 
 .faq-container {
