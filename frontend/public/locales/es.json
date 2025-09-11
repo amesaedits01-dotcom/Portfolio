@@ -1,12 +1,14 @@
 {
   "nav": {
+    "home": "Inicio",
     "projects": "Proyectos",
+    "faq": "FAQ",
     "contact": "Contacto"
   },
   "hero": {
     "title": "Libera tu creatividad",
     "subtitle": "Motion graphics que convierten vistas en leads",
-    "microcopy": "Unleash the creativity — take your brand to the next level.",
+    "microcopy": "Take your brand to the next level.",
     "projectsBtn": "Proyectos",
     "scheduleBtn": "Agenda llamada"
   },
@@ -51,11 +53,42 @@
     "form": {
       "name": "Nombre",
       "email": "Email",
-      "message": "Mensaje",
-      "submit": "Enviar"
+      "serviceType": "Tipo de Servicio",
+      "projectType": "Tipo de Proyecto", 
+      "budget": "Presupuesto",
+      "message": "Descripción del Proyecto",
+      "submit": "Enviar",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado correctamente! Te responderé pronto.",
+      "error": "Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo."
+    },
+    "serviceTypes": {
+      "videoEditing": "Edición de Video",
+      "motionGraphics": "Motion Graphics",
+      "logoAnimation": "Animación de Logo",
+      "socialMedia": "Contenido Redes Sociales"
+    },
+    "projectTypes": {
+      "reel": "Reel",
+      "advertisement": "Anuncio",
+      "productVideo": "Video de Producto",
+      "uiVideo": "Video UI",
+      "other": "Otro"
+    },
+    "budgetRanges": {
+      "under500": "Menos de $500",
+      "500to1000": "$500 - $1,000",
+      "1000to2500": "$1,000 - $2,500",
+      "2500to5000": "$2,500 - $5,000",
+      "over5000": "Más de $5,000",
+      "discuss": "A discutir"
     }
   },
   "footer": {
     "copyright": "© 2025 Ariel Mesa. Todos los derechos reservados."
+  },
+  "carousel": {
+    "trustedBy": "Empresas que confían en nosotros",
+    "followedBy": "Seguido por creadores"
   }
 }
