@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Unleash your creativity",
+    "subtitle": "Motion graphics that convert views into leads",
+    "microcopy": "Unleash the creativity — take your brand to the next level.",
+    "projectsBtn": "Projects",
+    "scheduleBtn": "Schedule call"
+  },
+  "projects": {
+    "title": "Projects",
+    "categories": {
+      "reels": "Reels",
+      "videosUI": "UI Videos",
+      "videosProduct": "Product Videos",
+      "logoReveal": "Logo Reveal"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": {
+      "question": "What types of projects do you edit?",
+      "answer": "I edit reels, vertical ads (9:16), product videos, UI videos and motion graphics for social and web. I handle short-form (15–60s) and longer pieces (up to 10 min), always focused on conversion and storytelling."
+    },
+    "q2": {
+      "question": "How long does delivery take?",
+      "answer": "It depends on type, duration and complexity. A simple reel can be delivered in a few days; motion-graphics-heavy projects take longer. I confirm exact timing after receiving your brief."
+    },
+    "q3": {
+      "question": "What do I need to send to start?",
+      "answer": "A brief with objectives and references; raw video files (.mp4/.mov); logos/vector files; fonts (if applicable); a script or timestamps; music/licenses. If something's missing, I'll provide a checklist."
+    },
+    "q4": {
+      "question": "What formats and deliverables do you include?",
+      "answer": "Standard delivery: master .mp4 (web-ready), vertical/horizontal versions if needed, and SRT subtitle files on request. I can also prepare mini-clips for thumbnails or platform-specific adaptations."
+    },
+    "q5": {
+      "question": "Do you include revisions?",
+      "answer": "Yes — 2 rounds of revisions included in the base price (rhythm, color, micro-edits). Major restructures are charged separately."
+    }
+  },
+  "cta": {
+    "text": "Your competitors are already posting. Why wait?",
+    "subtitle": "We create content that converts"
+  },
+  "contact": {
+    "title": "Contact",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Ariel Mesa. All rights reserved."
+  }
+}
