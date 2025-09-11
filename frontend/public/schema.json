@@ -1,0 +1,165 @@
+{
+  "landing": {
+    "name": "Ariel Mesa",
+    "brandName": "AM",
+    "roles": ["Motion Graphics Designer", "Video Editor", "Creative Director"],
+    "heroCopy": {
+      "title": "Libera tu creatividad",
+      "subtitle": "Motion graphics que convierten vistas en leads",
+      "microcopy": "Unleash the creativity — take your brand to the next level."
+    },
+    "heroButtons": [
+      {
+        "text": "Proyectos",
+        "action": "scroll",
+        "target": "projects",
+        "type": "primary"
+      },
+      {
+        "text": "Agenda llamada",
+        "action": "external",
+        "target": "https://calendly.com/arielmesa",
+        "type": "secondary"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "Hero Section",
+      "content": "Main landing area with parallax particles and CTA buttons"
+    },
+    {
+      "id": "logos",
+      "title": "Logo Carousel",
+      "content": "Rotating carousel of client logos"
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "content": "Tabbed portfolio showcase with video previews"
+    },
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "content": "Frequently asked questions with expandable answers"
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "content": "Contact form with webhook integration"
+    }
+  ],
+  "projects": [
+    {
+      "id": "reel-1",
+      "category": "reels",
+      "title": "Reel 1",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "poster": "https://picsum.photos/270/480?random=10",
+      "thumbnail": "https://picsum.photos/270/480?random=10",
+      "alt": "Reel project 1"
+    },
+    {
+      "id": "reel-2",
+      "category": "reels",
+      "title": "Reel 2",
+      "videoUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "poster": "https://picsum.photos/270/480?random=11",
+      "thumbnail": "https://picsum.photos/270/480?random=11",
+      "alt": "Reel project 2"
+    }
+  ],
+  "logosCarousel": [
+    {
+      "id": 1,
+      "name": "Google",
+      "url": "https://logo.clearbit.com/google.com",
+      "alt": "Google logo"
+    },
+    {
+      "id": 2,
+      "name": "Amazon",
+      "url": "https://logo.clearbit.com/amazon.com",
+      "alt": "Amazon logo"
+    },
+    {
+      "id": 3,
+      "name": "Apple",
+      "url": "https://logo.clearbit.com/apple.com",
+      "alt": "Apple logo"
+    },
+    {
+      "id": 4,
+      "name": "Netflix",
+      "url": "https://logo.clearbit.com/netflix.com",
+      "alt": "Netflix logo"
+    },
+    {
+      "id": 5,
+      "name": "Meta",
+      "url": "https://logo.clearbit.com/meta.com",
+      "alt": "Meta logo"
+    }
+  ],
+  "faq": [
+    {
+      "id": "q1",
+      "question": "¿Qué tipo de proyectos editas?",
+      "answer": "Edito reels, anuncios verticales 9:16, videos de producto, videos UI y piezas de motion graphics para redes y web. Trabajo tanto contenido corto (15–60s) como piezas más largas (hasta 10 min), siempre orientadas a conversión y storytelling."
+    },
+    {
+      "id": "q2",
+      "question": "¿Cuánto tiempo tardas en entregar un proyecto?",
+      "answer": "Varía según el tipo, duración y complejidad. Un reel simple puede entregarse en pocos días; piezas con motion graphics y múltiples revisiones requieren más tiempo. Confirmo el plazo exacto al recibir tu brief."
+    },
+    {
+      "id": "q3",
+      "question": "¿Qué necesito enviarte para empezar?",
+      "answer": "Un brief con objetivo y referencias; los videos/crudos (.mp4/.mov); logos/vectoriales; tipografías (si aplica); guion o timestamps y recursos (música/licencias). Si falta algo, te envío una checklist para facilitar el envío."
+    },
+    {
+      "id": "q4",
+      "question": "¿Qué formatos y entregables incluyes?",
+      "answer": "Entrega estándar: master .mp4 (web-ready), versiones vertical/horizontal si aplica y archivos SRT de subtítulos si se solicitan. Puedo preparar además mini-clips para thumbnails o adaptaciones por plataforma."
+    },
+    {
+      "id": "q5",
+      "question": "¿Incluyes revisiones en tus entregas?",
+      "answer": "Sí. Incluyo 2 rondas de revisiones en el precio base (ajustes de ritmo, color y micro-edits). Cambios mayores o reestructuraciones se cotizan aparte."
+    }
+  ],
+  "contact": {
+    "webhookUrl": "https://example.com/webhook-placeholder",
+    "fields": [
+      {
+        "name": "name",
+        "type": "text",
+        "required": true,
+        "label": "Nombre"
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "required": true,
+        "label": "Email"
+      },
+      {
+        "name": "message",
+        "type": "textarea",
+        "required": true,
+        "label": "Mensaje"
+      }
+    ]
+  },
+  "seo": {
+    "title": "Ariel Mesa - Motion Graphics & Video Editor",
+    "description": "Motion graphics que convierten vistas en leads. Especializado en reels, videos UI, videos de producto y logo reveals para marcas que buscan impacto.",
+    "ogImage": "/og-image.jpg",
+    "keywords": ["motion graphics", "video editing", "reels", "UI videos", "product videos", "logo reveal", "Ariel Mesa"]
+  },
+  "social": {
+    "whatsapp": "https://wa.me/1234567890",
+    "instagram": "https://instagram.com/arielmesa"
+  }
+}
