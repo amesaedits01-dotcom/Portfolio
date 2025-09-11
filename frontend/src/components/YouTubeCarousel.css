@@ -1,0 +1,244 @@
+.youtube-carousel-section {
+  padding: 3rem 0;
+  background: var(--color-section-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.youtube-carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.carousel-title {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.youtube-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.youtube-track {
+  display: flex;
+  width: fit-content;
+  animation: scrollYouTube 50s linear infinite;
+  will-change: transform;
+}
+
+.youtube-carousel.paused .youtube-track {
+  animation-play-state: paused;
+}
+
+.youtube-item {
+  flex-shrink: 0;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 140px;
+  transition: all 0.3s ease;
+}
+
+.youtube-item:hover {
+  transform: translateY(-4px);
+}
+
+.channel-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  border: 2px solid var(--color-border);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.youtube-item:hover .channel-avatar {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 15px rgba(0, 112, 243, 0.2);
+}
+
+.channel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.youtube-item:hover .channel-image {
+  transform: scale(1.1);
+}
+
+.channel-info {
+  text-align: center;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.channel-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.subscriber-count {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px var(--color-shadow);
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+  background: var(--color-accent);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+  opacity: 1;
+  box-shadow: 0 4px 15px rgba(0, 112, 243, 0.3);
+}
+
+@keyframes scrollYouTube {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%); /* Move by 1/3 since we have 3 copies */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .youtube-carousel-section {
+    padding: 2rem 0;
+  }
+  
+  .youtube-item {
+    padding: 0 1rem;
+    min-width: 100px;
+  }
+  
+  .channel-avatar {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .channel-name {
+    font-size: 0.75rem;
+  }
+  
+  .subscriber-count {
+    font-size: 0.625rem;
+  }
+  
+  .carousel-control {
+    right: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .carousel-title {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .youtube-carousel-container {
+    padding: 0 2rem;
+  }
+  
+  .youtube-item {
+    padding: 0 2rem;
+    min-width: 160px;
+  }
+  
+  .channel-avatar {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+  }
+  
+  .channel-name {
+    font-size: 1rem;
+  }
+  
+  .subscriber-count {
+    font-size: 0.875rem;
+  }
+  
+  .carousel-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .youtube-track {
+    animation: none;
+  }
+  
+  .youtube-carousel.paused .youtube-track {
+    animation: none;
+  }
+  
+  .carousel-control:hover {
+    transform: translateY(-50%);
+  }
+  
+  .youtube-item:hover {
+    transform: none;
+  }
+  
+  .youtube-item:hover .channel-image {
+    transform: none;
+  }
+}
