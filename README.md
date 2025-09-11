@@ -1,6 +1,6 @@
 # Ariel Mesa - Motion Graphics Portfolio
 
-A professional, responsive, and accessible single-page portfolio website built with React, featuring multilingual support, theme switching, and interactive elements.
+A professional, responsive, and accessible single-page portfolio website built with React, featuring multilingual support, theme switching, dual carousels, enhanced contact form, and interactive elements.
 
 ## 🚀 Quick Start
 
@@ -14,227 +14,261 @@ yarn start
 # Open http://localhost:3000
 ```
 
-## 📋 Features
+## 📋 New Features & Enhancements
 
-- **Responsive Design**: Works perfectly on all devices (320px to 1440px+)
-- **Accessibility First**: WCAG AA compliant with keyboard navigation
-- **Multilingual**: Spanish/English with persistent language selection
-- **Theme Switching**: Light/dark mode with system preference detection
-- **Interactive Elements**: Parallax particles, video previews, smooth animations
-- **Performance Optimized**: Lazy loading, WebP images, minimal bundle size
+### ✨ Major Updates Implemented:
+- **Updated Hero**: "Take your brand to the next level." headline
+- **Calendly Integration**: Schedule call button opens https://calendly.com/amesaedits01/30min
+- **Dual Carousels**: Brand logos + YouTube channels with subscriber counts
+- **Enhanced Projects**: 2x4 grid on desktop, swipeable carousel on mobile, video-only cards
+- **Centered FAQ**: Horizontally centered with 5 accessible accordions + navbar link
+- **Advanced Contact Form**: Service type, project type, budget fields + enhanced theming
+- **Improved i18n**: Complete translation coverage with client-side switching
+- **Alternating Backgrounds**: Soft gradient transitions between sections
+- **Enhanced Theme System**: Proper CSS variables and localStorage persistence
 
-## 🎨 Sections
+## 🎨 Sections & Layout
 
-1. **Hero**: Interactive landing with parallax particles and CTA buttons
-2. **Logo Carousel**: Rotating client logos with pause/play controls
-3. **Projects**: Tabbed portfolio (Reels, UI Videos, Product Videos, Logo Reveals)
-4. **FAQ**: Expandable questions with smooth animations
-5. **Contact**: Form with webhook integration and validation
-6. **Footer**: Social links and copyright
+1. **Hero**: Interactive landing with updated headline and Calendly link
+2. **Brand Carousel**: Infinite loop of company logos (autoplay, pause on hover)
+3. **YouTube Carousel**: Creator profiles with subscriber counts (dynamic markup)
+4. **Projects**: 2x4 desktop grid, mobile swipe carousel, video thumbnails only
+5. **FAQ**: Centered block with 5 accessible accordions
+6. **Contact**: Enhanced form with service/project type, budget, and theme-aware styling
+7. **Footer**: Social links and copyright
 
-## 🌐 Internationalization (i18n)
+## 🔧 Configuration Guide
+
+### 📅 Calendly Link Configuration
+**Location**: `/frontend/src/components/Hero.js` (line ~88)
+```javascript
+const handleScheduleCall = () => {
+  window.open('https://calendly.com/amesaedits01/30min', '_blank', 'noopener,noreferrer');
+};
+```
+**To change**: Update the URL in the `handleScheduleCall` function.
+
+### 📧 Email Configuration
+**Location**: `/frontend/src/components/Contact.js` (line ~11)
+```javascript
+const destinationEmail = 'amesaedits01@gmail.com';
+const webhookUrl = 'https://formspree.io/f/your-form-id'; // Replace with actual endpoint
+```
+
+**Mailto Fallback**: Automatically creates mailto links with form data
+**Backend Endpoint**: For production, replace `webhookUrl` with your form handler
+
+### 🏢 Brand Carousel Configuration
+**Location**: `/frontend/src/components/BrandCarousel.js` (lines 12-21)
+```javascript
+const brands = [
+  { id: 1, name: 'Google', url: 'https://logo.clearbit.com/google.com' },
+  // Add more brands here
+];
+```
+**To modify**: Edit the `brands` array with your client logos.
+
+### 🎥 YouTube Carousel Configuration  
+**Location**: `/frontend/src/components/YouTubeCarousel.js` (lines 12-62)
+```javascript
+const youtubeChannels = [
+  { 
+    id: 1, 
+    name: 'MrBeast', 
+    profileUrl: 'https://yt3.ggpht.com/...',
+    subscribers: '112M',
+    handle: '@MrBeast'
+  },
+  // Add more channels here  
+];
+```
+**To modify**: Update the `youtubeChannels` array with actual creator data.
+
+## 🌐 Translation System
 
 ### Adding New Languages
-
 1. Create new locale file: `/public/locales/[lang].json`
-2. Copy structure from existing locale files
-3. Add translation keys following the nested structure:
+2. Copy structure from existing files
+3. Add language option to navbar
 
+### Locale File Structure
+- `/public/locales/es.json` - Spanish (default)
+- `/public/locales/en.json` - English
+
+### Translation Keys
 ```json
 {
-  "nav": {
-    "projects": "Projects",
-    "contact": "Contact"
-  },
-  "hero": {
-    "title": "Your title here",
-    "subtitle": "Your subtitle here"
+  "nav": { "home": "Home", "projects": "Projects", "faq": "FAQ", "contact": "Contact" },
+  "hero": { "title": "...", "subtitle": "...", "microcopy": "..." },
+  "contact": {
+    "serviceTypes": { "videoEditing": "Video Editing" },
+    "budgetRanges": { "under500": "Under $500" }
   }
 }
 ```
 
-### Locale File Structure
+## 🎨 Theme & Color System
 
-- `/public/locales/es.json` - Spanish translations
-- `/public/locales/en.json` - English translations
+### CSS Variables Location
+**File**: `/frontend/src/App.css` (lines 3-45)
 
-All text content is externalized to these files for easy editing without code changes.
-
-## 🎨 Theme System
-
-### CSS Variables
-
-The theme system uses CSS custom properties defined in `/src/App.css`:
-
-```css
+### Key Variables:
+```css  
 :root {
-  --bg: #ffffff;
-  --text: #151515;
-  --accent: #0070f3;
-  /* ... more variables */
+  --color-bg: #ffffff;           /* Main background */
+  --color-text: #151515;         /* Primary text */
+  --color-accent: #0070f3;       /* Accent color */
+  --color-section-1: #ffffff;    /* Hero background */
+  --color-section-2: linear-gradient(...); /* Brand carousel */
+  /* etc... */
 }
 
 [data-theme="dark"] {
-  --bg: #0b1220;
-  --text: #ffffff;
-  --accent: #88a2ff;
-  /* ... dark theme overrides */
+  --color-bg: #0b1220;          /* Dark background */
+  --color-text: #ffffff;        /* Dark text */
+  /* etc... */
 }
 ```
 
-### Adding Theme Variables
+### Theme Persistence
+- **Location**: `/frontend/src/contexts/ThemeContext.js`
+- **Storage**: `localStorage.getItem('theme')`
+- **Fallback**: `prefers-color-scheme` media query
 
-1. Define new variable in `:root` for light theme
-2. Override in `[data-theme="dark"]` for dark theme
-3. Use `var(--variable-name)` in CSS
+## 📱 Responsive Design
 
-## ✨ Animation System
-
-### Background Particles
-
-Located in `/src/components/Hero.js`:
-
-- Uses `requestAnimationFrame` for smooth 60fps animation
-- 3-layer mouse parallax system
-- Respects `prefers-reduced-motion`
-- Pausible with accessibility controls
-
-### Micro-interactions
-
-Configured in component CSS files:
-
-- Hover states: `transform: translateY(-2px)`
-- Transitions: `transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)`
-- Focus states: Visible outlines for keyboard navigation
-
-## 📊 Content Management
-
-### Schema.json Configuration
-
-The `/public/schema.json` file controls all editable content:
-
-```json
-{
-  "landing": {
-    "name": "Ariel Mesa",
-    "heroCopy": { ... }
-  },
-  "projects": [ ... ],
-  "contact": {
-    "webhookUrl": "https://your-webhook-url.com"
-  }
-}
-```
-
-### Webhook Configuration
-
-To connect the contact form:
-
-1. Update `webhookUrl` in `schema.json`
-2. Form will POST JSON data to this endpoint
-3. Expected payload format:
-```json
-{
-  "name": "User Name",
-  "email": "user@example.com", 
-  "message": "User message"
-}
-```
-
-## 🛠 Development
-
-### File Structure
-
-```
-src/
-├── components/
-│   ├── Navbar.js + Navbar.css
-│   ├── Hero.js + Hero.css
-│   ├── Projects.js + Projects.css
-│   ├── FAQ.js + FAQ.css
-│   ├── Contact.js + Contact.css
-│   └── Footer.js + Footer.css
-├── contexts/
-│   ├── ThemeContext.js
-│   └── I18nContext.js
-└── App.js + App.css
-```
-
-### Adding New Components
-
-1. Create component file in `/src/components/`
-2. Create matching CSS file
-3. Import and use in `App.js`
-4. Add necessary translations to locale files
-
-## 📱 Responsive Breakpoints
-
-Defined in `/src/App.css`:
-
+### Breakpoints
 - **320px**: Minimum mobile
-- **480px**: Large mobile
-- **768px**: Tablet
+- **480px**: Large mobile  
+- **768px**: Tablet (Projects switches to desktop grid)
 - **1024px**: Desktop
 - **1440px**: Large desktop
 
+### Projects Layout
+- **Desktop (≥768px)**: 2x4 grid (2 columns, 4 rows)
+- **Mobile (<768px)**: Swipeable carousel with touch gestures
+
 ## ♿ Accessibility Features
 
+- **WCAG AA Compliance**: Proper contrast ratios and color usage
 - **Keyboard Navigation**: All interactive elements accessible via Tab/Enter/Space
-- **Screen Reader Support**: Proper ARIA labels and roles
-- **Focus Management**: Visible focus indicators
+- **Screen Reader Support**: ARIA labels, roles, and proper semantic HTML
+- **Focus Management**: Visible focus indicators on all interactive elements
 - **Reduced Motion**: Respects `prefers-reduced-motion` setting
-- **Color Contrast**: WCAG AA compliant contrast ratios
-- **Form Validation**: Accessible error messages with `role="alert"`
+- **Form Accessibility**: Error messages with `role="alert"`, proper labels
 
-## 🧪 Testing Checklist
+## 🧪 QA Testing Checklist
 
-### Manual QA Tests
+### ✅ Accessibility Tests
+- [ ] Tab navigation works through all interactive elements
+- [ ] FAQ accordions keyboard operable (Enter/Space)
+- [ ] Play buttons keyboard operable (Enter/Space)  
+- [ ] Form validation accessible (aria-invalid, role="alert")
+- [ ] Color contrast meets WCAG AA standards
+- [ ] Screen reader compatibility verified
 
-- [ ] i18n persistence (language saves on reload)
-- [ ] Theme persistence (dark/light mode saves on reload)
-- [ ] Hamburger menu keyboard operable (Enter/Space)
-- [ ] Play buttons keyboard operable (Enter/Space)
-- [ ] FAQ accordion keyboard operable
-- [ ] Form validation works correctly
-- [ ] All links have proper `aria-label` attributes
-- [ ] prefers-reduced-motion respected (animations disabled)
-- [ ] Contrast checks pass WCAG AA standards
-- [ ] Mobile responsive design works 320px-1440px+
+### ✅ Theme Persistence Tests  
+- [ ] Theme toggle works (light/dark switching)
+- [ ] Theme persists on page reload
+- [ ] System preference detected on first visit
+- [ ] All sections respect theme colors
+- [ ] Contact section stays dark in both themes
 
-### Performance Tests
+### ✅ Translation Tests
+- [ ] Language selector switches without page reload
+- [ ] All text translates (nav, hero, FAQ, contact form)
+- [ ] Language persists on page reload  
+- [ ] Form validation messages translate
+- [ ] Select dropdown options translate
 
+### ✅ Form Submission Tests
+- [ ] All form fields validate correctly
+- [ ] Service type and project type required
+- [ ] Budget selection required  
+- [ ] Email validation works
+- [ ] Success/error messages display
+- [ ] Mailto fallback works if webhook fails
+
+### ✅ Carousel Behavior Tests
+- [ ] Brand carousel autoplays and loops infinitely
+- [ ] Brand carousel pauses on hover
+- [ ] YouTube carousel shows subscriber counts
+- [ ] Both carousels respect reduced motion preference
+- [ ] Carousel controls work (pause/play buttons)
+
+### ✅ Mobile Responsiveness Tests
+- [ ] Projects carousel swipes work on mobile
+- [ ] Touch gestures respond correctly
+- [ ] Navigation indicators update on swipe
+- [ ] All text readable on small screens (320px+)
+- [ ] Forms work properly on mobile
+
+### ✅ Performance Tests
 - [ ] LCP (Largest Contentful Paint) ≤ 2.5s
-- [ ] Images use `loading="lazy"`
-- [ ] Videos use `preload="none"`
+- [ ] Images lazy load properly
+- [ ] Videos use preload="none"
+- [ ] Smooth animations (60fps)
 - [ ] No layout shifts during load
-- [ ] Smooth 60fps animations
 
 ## 📦 Production Build
 
 ```bash
-# Build for production
+# Build optimized version
 yarn build
 
-# Preview build locally
+# Preview build locally  
 npx serve -s build
 
-# Deploy build/ folder to your hosting provider
+# Deploy build/ folder to hosting provider
 ```
 
-## 🔧 Customization
+## 🔧 Technical Implementation Notes
 
-### Colors
-Edit CSS variables in `/src/App.css`
+### Form Submission Options
 
-### Content
-Edit translations in `/public/locales/*.json`
+**Option 1: Mailto Fallback (Current)**
+```javascript
+// Automatically creates mailto: links with form data
+const mailtoLink = `mailto:${destinationEmail}?subject=${subject}&body=${body}`;
+window.location.href = mailtoLink;
+```
 
-### Projects
-Update project data in `/public/schema.json`
+**Option 2: Backend Endpoint (Recommended)**
+```javascript
+// Replace webhookUrl with your form handler
+const response = await fetch(webhookUrl, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData)
+});
+```
 
-### Contact Form
-Set webhook URL in `/public/schema.json`
+### Carousel Implementation
+- **Infinite Loop**: Uses CSS transforms with 3x content duplication
+- **Performance**: Hardware-accelerated with `will-change: transform`
+- **Accessibility**: Pause/play controls, respect reduced motion
+
+### Theme System Architecture
+- **CSS Custom Properties**: Centralized color management
+- **Context API**: React state management for theme
+- **Local Storage**: Persistent user preference
+- **Media Query**: System preference fallback
+
+## 🐛 Common Issues & Solutions
+
+**Issue**: Carousel not looping smoothly
+**Solution**: Ensure 3x content duplication and proper CSS animation keyframes
+
+**Issue**: Theme not persisting  
+**Solution**: Check localStorage access and ThemeContext provider wrapping
+
+**Issue**: Translations not updating
+**Solution**: Verify data-i18n attributes and useEffect dependencies
+
+**Issue**: Form not submitting
+**Solution**: Check webhook URL or mailto fallback implementation
 
 ---
 
-Built with ❤️ for Ariel Mesa - Motion Graphics Designer
+**Built with ❤️ for Ariel Mesa - Motion Graphics Professional**  
+Portfolio optimized for performance, accessibility, and user experience.
