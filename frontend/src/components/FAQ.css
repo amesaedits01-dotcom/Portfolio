@@ -60,7 +60,7 @@
 .chevron {
   flex-shrink: 0;
   transition: transform 0.3s ease;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
 }
 
 .chevron.open {
