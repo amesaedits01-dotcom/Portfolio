@@ -1,0 +1,136 @@
+.logo-carousel-section {
+  padding: 3rem 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.logo-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  width: fit-content;
+  animation: scrollLogos 30s linear infinite;
+}
+
+.logo-carousel.paused .logo-track {
+  animation-play-state: paused;
+}
+
+.logo-item {
+  flex-shrink: 0;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.logo-image {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  opacity: 0.8;
+  filter: grayscale(50%);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px var(--shadow);
+  z-index: 10;
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .logo-item {
+    padding: 0 1rem;
+    height: 60px;
+  }
+  
+  .logo-image {
+    height: 30px;
+    max-width: 80px;
+  }
+  
+  .carousel-control {
+    right: 0.5rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo-carousel-container {
+    padding: 0 2rem;
+  }
+  
+  .logo-item {
+    padding: 0 3rem;
+    height: 100px;
+  }
+  
+  .logo-image {
+    height: 50px;
+    max-width: 150px;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .logo-track {
+    animation: none;
+  }
+  
+  .logo-carousel.paused .logo-track {
+    animation: none;
+  }
+  
+  .carousel-control:hover {
+    transform: translateY(-50%);
+  }
+}
