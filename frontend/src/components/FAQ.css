@@ -54,7 +54,7 @@
 
 .faq-question:hover,
 .faq-question:focus {
-  color: var(--accent);
+  color: var(--color-accent);
 }
 
 .chevron {
