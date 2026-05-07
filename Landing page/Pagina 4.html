@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoBranding — Sistema de Crecimiento Orgánico en Instagram</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #000000;
+      --purple: #3E164F;
+      --violet: #b523f3;
+      --gold: #C9A84C;
+      --gold-lt: #e8c97a;
+      --white: #ffffff;
+      --gray: #888888;
+      --gray-lt: #cccccc;
+      --card-bg: rgba(62, 22, 79, 0.12);
+      --border: rgba(181, 35, 243, 0.18);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-ui: 'Syne', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-ui);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(62, 22, 79, .55) 0%, transparent 70%);
+      top: -200px;
+      left: -200px;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(181, 35, 243, .18) 0%, transparent 70%);
+      bottom: 0;
+      right: -100px;
+      animation: drift2 22s ease-in-out infinite alternate;
+    }
+
+    .orb-3 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(201, 168, 76, .08) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      animation: drift3 28s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift1 {
+      to {
+        transform: translate(80px, 60px);
+      }
+    }
+
+    @keyframes drift2 {
+      to {
+        transform: translate(-60px, -80px);
+      }
+    }
+
+    @keyframes drift3 {
+      to {
+        transform: translate(40px, -40px);
+      }
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.2rem 5vw;
+      background: rgba(0, 0, 0, .55);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, .04);
+      transition: padding .3s;
+    }
+
+    nav.scrolled {
+      padding: .8rem 5vw;
+    }
+
+    .logo {
+      font-family: "Times New Roman", Times, serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: .08em;
+      background: linear-gradient(135deg, #fff7ff 0%, #f2dbff 22%, #c77dff 54%, #ffefff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(181, 35, 243, .25), rgba(201, 168, 76, .18), transparent);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 5rem 5vw 3.5rem;
+      position: relative;
+      overflow: visible;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 2.8vw, 2.55rem);
+      font-weight: 700;
+      line-height: 1.18;
+      max-width: 780px;
+      margin-bottom: 1rem;
+      animation: fadeUp .9s ease both;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(100deg, var(--violet) 0%, #e060ff 45%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201, 168, 76, .3);
+      border-radius: 40px;
+      padding: .4rem 1.1rem;
+      margin-bottom: 1.8rem;
+      animation: fadeUp .8s .15s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(1.4);
+      }
+    }
+
+    .video-wrap {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      animation: fadeUp 1s .28s ease both;
+    }
+
+    .video-placeholder {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #0a0012 0%, #1a0630 40%, #2d0a50 70%, #1a0a28 100%);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 80px rgba(181, 35, 243, .15);
+    }
+
+    .video-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(181, 35, 243, .18) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 30%, rgba(201, 168, 76, .08) 0%, transparent 45%);
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(181, 35, 243, .9), rgba(107, 23, 160, .9));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(181, 35, 243, .4);
+      animation: ring 2.5s ease-in-out infinite;
+      transition: transform .25s;
+      pointer-events: none;
+    }
+
+    .video-placeholder:hover .play-btn {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    @keyframes ring {
+      0% {
+        box-shadow: 0 0 0 0 rgba(181, 35, 243, .4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 22px rgba(181, 35, 243, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(181, 35, 243, 0);
+      }
+    }
+
+    .play-btn svg {
+      width: 30px;
+      height: 30px;
+      margin-left: 4px;
+    }
+
+    .hero-cta-wrap {
+      margin-top: 1.2rem;
+      animation: fadeUp 1s .42s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .85rem 2.4rem .95rem 2.4rem;
+      background: linear-gradient(135deg, #6b17a0 0%, #b523f3 60%, #c840ff 100%);
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .06em;
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 40px rgba(181, 35, 243, .35);
+      transition: transform .2s, box-shadow .2s;
+      line-height: 1.5;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 60px rgba(181, 35, 243, .55);
+    }
+
+    .btn-primary svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    section {
+      padding: 5.5rem 5vw;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+
+    .section-copy {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 2.8rem;
+      color: var(--gray-lt);
+      line-height: 1.75;
+      font-size: .98rem;
+    }
+
+    .pillars {
+      background: rgba(62, 22, 79, .06);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 360px));
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: stretch;
+      margin: 0 auto;
+      max-width: 820px;
+    }
+
+    .pilar-card {
+      position: relative;
+      overflow: hidden;
+      padding: 2.15rem 2rem 2.2rem;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+      text-align: center;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .pilar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--violet), transparent);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .pilar-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(181, 35, 243, .38);
+      box-shadow: 0 20px 60px rgba(62, 22, 79, .25);
+    }
+
+    .pilar-card:hover::before {
+      opacity: 1;
+    }
+
+    .pilar-num {
+      font-family: var(--font-display);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: .7rem;
+      display: block;
+    }
+
+    .pilar-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: .85rem;
+    }
+
+    .pilar-desc {
+      font-size: .94rem;
+      color: var(--gray-lt);
+      line-height: 1.75;
+      max-width: 92%;
+    }
+
+    .faq-list {
+      margin: 2.8rem auto 0;
+      max-width: 760px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      transition: border-color .25s;
+    }
+
+    .faq-item.open {
+      border-color: rgba(181, 35, 243, .4);
+    }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.3rem 1.7rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 1rem;
+    }
+
+    .faq-q-text {
+      font-size: .96rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(181, 35, 243, .35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--violet);
+      font-size: 1.1rem;
+      font-weight: 300;
+      transition: transform .3s, background .25s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(181, 35, 243, .15);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s cubic-bezier(.4, 0, .2, 1), padding .3s;
+      padding: 0 1.7rem;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-a p {
+      font-size: .9rem;
+      color: var(--gray-lt);
+      line-height: 1.75;
+    }
+
+    .cta-band {
+      text-align: center;
+      padding: 6rem 5vw;
+      background: linear-gradient(135deg, rgba(62, 22, 79, .35) 0%, rgba(0, 0, 0, 0) 100%);
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(181, 35, 243, .12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.8vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      max-width: 700px;
+      margin: 0 auto 1.2rem;
+    }
+
+    .cta-band p {
+      color: var(--gray-lt);
+      font-size: .98rem;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .calendly-inline-widget {
+      width: 100%;
+      max-width: 700px;
+      height: 520px;
+      margin: 0 auto;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(199, 125, 255, 0.16);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    footer {
+      padding: 2.2rem 5vw;
+      border-top: 1px solid rgba(255, 255, 255, .05);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem 2rem;
+      font-size: .76rem;
+      color: var(--gray);
+      text-align: center;
+    }
+
+    /* ----- ESTILOS DEL POPUP DE CONFIRMACIÓN ----- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+
+    .popup-container {
+      position: relative;
+      max-width: 500px;
+      width: 90%;
+      margin: 2rem auto;
+      background: transparent;
+      border-radius: 32px;
+      overflow: hidden;
+    }
+
+    .orb-popup {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-1-pop {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(62, 22, 79, 0.45) 0%, transparent 70%);
+      top: -150px;
+      left: -120px;
+    }
+
+    .orb-2-pop {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(181, 35, 243, 0.25) 0%, transparent 70%);
+      bottom: -80px;
+      right: -80px;
+    }
+
+    .orb-3-pop {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+      top: 40%;
+      left: 30%;
+    }
+
+    .popup-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(28px);
+      border: 1px solid rgba(181, 35, 243, 0.25);
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      text-align: center;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    .brand-pop {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #fff7ff 0%, #f2dbff 22%, #c77dff 54%, #ffefff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.2rem;
+    }
+
+    .popup-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .popup-text {
+      color: var(--gray-lt);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .popup-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.8rem;
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+    }
+
+    .popup-wa:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: var(--gray-lt);
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 10;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .popup-close:hover {
+      color: var(--white);
+    }
+
+    @media (max-width: 560px) {
+      .popup-card {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .popup-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* ------------------------------------------------- */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 4.8rem;
+      }
+
+      .calendly-inline-widget {
+        height: 500px;
+        max-width: 100%;
+      }
+
+      .pillars-grid {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+      }
+
+      .pilar-card {
+        min-height: auto;
+        padding: 2rem 1.6rem 2rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 5.2rem 5vw 3rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.35rem, 7vw, 2.1rem);
+      }
+
+      .hero-cta-wrap {
+        overflow: visible !important;
+        height: auto !important;
+      }
+
+      .btn-primary {
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.95rem 2.4rem;
+        line-height: 1.4;
+        overflow: visible;
+        min-height: auto;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .cta-band {
+        padding: 5rem 5vw 5.6rem;
+      }
+
+      .calendly-inline-widget {
+        height: 460px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-eyebrow {
+        font-size: .62rem;
+        letter-spacing: .18em;
+        padding: .36rem .9rem;
+      }
+
+      .video-placeholder {
+        border-radius: 18px;
+      }
+
+      .play-btn {
+        width: 68px;
+        height: 68px;
+      }
+
+      .pilar-card,
+      .faq-q {
+        padding-left: 1.15rem;
+        padding-right: 1.15rem;
+      }
+
+      .pilar-title {
+        font-size: 1.2rem;
+      }
+
+      .pilar-desc {
+        font-size: .92rem;
+        max-width: 100%;
+      }
+
+      .cta-band p {
+        font-size: .94rem;
+      }
+
+      .calendly-inline-widget {
+        height: 420px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="wrapper">
+    <nav id="nav">
+      <span class="logo">NeoBranding</span>
+    </nav>
+
+    <section class="hero">
+      <h1>
+        Instalamos el sistema que lleva tu negocio de<br>
+        <em>10K a 100K</em> con Instagram,<br>
+        sin anuncios ni embudos complicados.
+      </h1>
+
+      <div class="hero-eyebrow">
+        Sistema Probado · Resultados Orgánicos · Sin Anuncios
+      </div>
+
+      <div class="video-wrap">
+        <div class="video-placeholder" style="padding:0; background:transparent;">
+          <iframe
+            src="https://player.vimeo.com/video/1186333803?h=5c9b8f2a1e&autoplay=0&title=0&byline=0&portrait=0&badge=0"
+            width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:24px;"
+            title="Video de presentación">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="hero-cta-wrap">
+        <a href="#agendar" class="btn-primary"
+          style="margin-top: 8px; display: inline-flex; align-items: center; gap: 0.5rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" style="width: 18px; height: 18px;">
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Agenda tu llamada
+        </a>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="pillars reveal">
+      <h2 class="section-title">Los 4 pilares del sistema</h2>
+      <p class="section-copy">
+        Cada parte del sistema está diseñada para trabajar en conjunto: estrategia para saber qué publicar, contenido
+        para atraer atención, conversión para transformar interés en ventas y acompañamiento para sostener el
+        crecimiento.
+      </p>
+
+      <div class="pillars-grid">
+        <div class="pilar-card">
+          <span class="pilar-num">Pilar #1</span>
+          <div class="pilar-title">Estrategia</div>
+          <p class="pilar-desc">Definimos el posicionamiento, el cliente ideal y la ruta de crecimiento para que tu
+            Instagram no sea solo contenido, sino una máquina de captación enfocada en ventas.</p>
+        </div>
+
+        <div class="pilar-card">
+          <span class="pilar-num">Pilar #2</span>
+          <div class="pilar-title">Contenido</div>
+          <p class="pilar-desc">Creamos ideas, guiones y piezas que conectan con el dolor real de tu audiencia. El
+            contenido se diseña para atraer, retener y mover a la gente a responderte.</p>
+        </div>
+
+        <div class="pilar-card">
+          <span class="pilar-num">Pilar #3</span>
+          <div class="pilar-title">Conversión</div>
+          <p class="pilar-desc">Implementamos automatizaciones y filtros para que los leads lleguen mejor calificados y
+            el proceso de venta sea más simple, directo y rentable.</p>
+        </div>
+
+        <div class="pilar-card">
+          <span class="pilar-num">Pilar #4</span>
+          <div class="pilar-title">Acompañamiento</div>
+          <p class="pilar-desc">Te acompañamos con seguimiento, ajustes y optimización continua para que el sistema no
+            se quede quieto y siga mejorando con el tiempo.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="faq" class="reveal">
+      <h2 class="section-title">Todo lo que necesitas saber antes de empezar.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">¿En cuánto tiempo puedo ver resultados reales?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Los primeros indicadores de tracción suelen aparecer entre las semanas 4 y 6. Los primeros cierres
+              orgánicos, en promedio, ocurren entre el mes 2 y el mes 3. A los 90 días, el sistema está completamente
+              instalado y funcionando de forma predecible.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">¿Necesito tener ya una audiencia grande en Instagram?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>No. El sistema está diseñado para funcionar independientemente del tamaño de tu audiencia actual. Lo que
+              importa es la calidad del contenido, la estrategia y la consistencia.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">¿El servicio incluye la producción del contenido o solo la estrategia?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Incluimos ambas. Creamos los guiones de Reels, las estructuras de carruseles y la edición profesional.
+              Vos solo te enfocás en grabar y enviarnos el material; nosotros hacemos el resto.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">¿Funciona para mi nicho? ¿Y si vendo servicios de alto valor?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>El sistema está especialmente diseñado para servicios de alto valor: coaching, mentoría, consultoría,
+              agencias y cursos premium. Cuanto más alto el ticket, más rentable se vuelve el sistema.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">¿Cuánto tiempo me va a tomar a mí como cliente?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Entre 2 y 4 horas semanales: una sesión de grabación y revisión de entregables. Nuestro equipo se encarga
+              del resto para que te enfoques en atender a tus clientes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="cta-band reveal" id="agendar">
+      <h2>¿Listo para escalar sin depender de anuncios?</h2>
+      <p>
+        Agenda tu sesión estratégica gratuita de 30 minutos. Analizamos tu negocio, identificamos las oportunidades de
+        crecimiento orgánico y te mostramos exactamente cómo implementar el sistema.
+      </p>
+
+      <div class="calendly-inline-widget"
+        data-url="https://calendly.com/neobranding-contentagency/sistema-50-leads?primary_color=991cd5&embed_domain=localhost"
+        style="min-width:320px;height:520px;"></div>
+    </section>
+
+    <footer>
+      <span>© 2025 NeoBranding Content Agency. Todos los derechos reservados.</span>
+      <span style="color: rgba(255,255,255,.1)">Diseñado para escalar.</span>
+    </footer>
+  </div>
+
+  <!-- POPUP DE CONFIRMACIÓN (oculto inicialmente) -->
+  <div id="confirmPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-container">
+      <button class="popup-close" id="closePopupBtn">✕</button>
+      <div class="orb-popup orb-1-pop"></div>
+      <div class="orb-popup orb-2-pop"></div>
+      <div class="orb-popup orb-3-pop"></div>
+      <div class="popup-card">
+        <div class="brand-pop">NeoBranding</div>
+        <h1 class="popup-title">Tu sesión quedó confirmada</h1>
+        <p class="popup-text">
+          Gracias por agendar. Ya tienes tu espacio reservado y ahora puedes continuar la conversación por WhatsApp para coordinar los siguientes pasos.
+        </p>
+        <a class="btn-primary popup-wa" href="https://wa.me/19782377542" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.1c0 4.9-4 8.9-8.9 8.9-1.5 0-3-.4-4.3-1.1L3 21l1.2-4.6c-.8-1.4-1.2-2.9-1.2-4.3 0-4.9 4-8.9 8.9-8.9s9.1 4 9.1 8.9z"></path>
+            <path d="M9 8.8c.2-.5.4-.5.7-.5h.6c.2 0 .4.1.5.4l.8 1.9c.1.2.1.4 0 .6l-.4.5c-.1.2-.2.4 0 .7.4.8 1.1 1.5 1.9 1.9.2.1.5.1.7 0l.6-.4c.2-.1.4-.1.6 0l1.9.8c.3.1.4.3.4.5v.6c0 .3 0 .5-.5.7-.4.2-1 .4-1.5.4-3.7 0-6.8-3-6.8-6.8 0-.6.2-1.2.4-1.6z"></path>
+          </svg>
+          Continuar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Función para mostrar el popup
+    function showConfirmationPopup() {
+      const popup = document.getElementById('confirmPopup');
+      if (popup && popup.style.display !== 'flex') {
+        popup.style.display = 'flex';
+      }
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('confirmPopup');
+      if (popup) popup.style.display = 'none';
+    }
+
+    // Escuchar evento de Calendly usando la API oficial (más confiable)
+    if (window.Calendly) {
+      window.Calendly.on('calendly.event_scheduled', function() {
+        showConfirmationPopup();
+      });
+    } else {
+      // Fallback: esperar a que Calendly se cargue
+      window.addEventListener('load', function() {
+        if (window.Calendly) {
+          window.Calendly.on('calendly.event_scheduled', function() {
+            showConfirmationPopup();
+          });
+        }
+      });
+    }
+
+    // También mantener el listener de postMessage como respaldo adicional
+    window.addEventListener('message', function(event) {
+      if (!event || !event.origin || event.origin.indexOf('calendly.com') === -1) return;
+      if (event.data && typeof event.data === 'object' && event.data.event === 'calendly.event_scheduled') {
+        showConfirmationPopup();
+      }
+    });
+
+    // Cerrar popup con X
+    const closeBtn = document.getElementById('closePopupBtn');
+    if (closeBtn) closeBtn.addEventListener('click', closePopup);
+
+    // Cerrar popup al hacer clic fuera
+    const popupOverlay = document.getElementById('confirmPopup');
+    if (popupOverlay) {
+      popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) closePopup();
+      });
+    }
+
+    // Resto de animaciones y comportamientos
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    const cardObs = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, i * 120);
+          cardObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.pilar-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(22px)';
+      card.style.transition = 'opacity .6s ease, transform .6s ease';
+      cardObs.observe(card);
+    });
+  </script>
+
+</body>
+
+</html>
